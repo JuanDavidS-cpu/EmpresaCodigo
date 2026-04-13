@@ -5,15 +5,15 @@ public class EmpleadoTemporal extends Empleado {
     private float valorDia;
 
     public EmpleadoTemporal(String nombre, String documento, int edad, float salarioBase, float descuentoSalud,
-                            float descuentoPension, CategoriaEmpleado categoriaEmpleado, int diasTrabajados, float valorDia) {
-        super(nombre, documento, edad, salarioBase, descuentoSalud, descuentoPension, categoriaEmpleado);
+                            float descuentoPension, CategoriaEmpleado categoria, int diasTrabajados, float valorDia) {
+        super(nombre, documento, edad, salarioBase, descuentoSalud, descuentoPension, categoria);
         this.diasTrabajados = diasTrabajados;
         this.valorDia = valorDia;
     }
 
-    public float calcularSalarioBruto(int diasTrabajados, float valorDia) {
-        float salario = (diasTrabajados * valorDia);
-        return salario;
+    public float calcularSalarioBruto() {
+        return (diasTrabajados * valorDia);
+
     }
 
     public int getDiasTrabajados() {
@@ -30,5 +30,13 @@ public class EmpleadoTemporal extends Empleado {
 
     public void setValorDia(float valorDia) {
         this.valorDia = valorDia;
+    }
+
+    @Override
+    public String toString() {
+        return "EmpleadoTemporal{" +
+                "diasTrabajados=" + diasTrabajados +
+                ", valorDia=" + valorDia +
+                '}';
     }
 }

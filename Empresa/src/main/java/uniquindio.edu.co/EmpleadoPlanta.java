@@ -9,20 +9,18 @@ public class EmpleadoPlanta extends Empleado {
 
 
     public EmpleadoPlanta(String nombre, String documento, int edad, float salarioBase, float descuentoSalud,
-                          float descuentoPension, CategoriaEmpleado categoriaEmpleado, String cargo,
+                          float descuentoPension, CategoriaEmpleado categoria, String cargo,
                           int horasExtra, float valorHoraExtra, float auxilioTransporte) {
-        super(nombre, documento, edad, salarioBase, descuentoSalud, descuentoPension, categoriaEmpleado);
+        super(nombre, documento, edad, salarioBase, descuentoSalud, descuentoPension, categoria);
         this.cargo = cargo;
         this.horasExtra = horasExtra;
         this.valorHoraExtra = valorHoraExtra;
         this.auxilioTransporte = auxilioTransporte;
     }
 
-    public float calculoSalarioBruto(float salarioBase, CategoriaEmpleado categoriaEmpleado,
-                                     int horasExtra, float auxilioTransporte) {
-        float salario = ((salarioBase + (salarioBase * categoriaEmpleado.getBonus())
-                + auxilioTransporte) + (horasExtra * valorHoraExtra));
-        return salario;
+    public float calcularSalarioBruto() {
+        return (getSalarioBase() + calcularBonificacionCategoria() + auxilioTransporte) + (horasExtra * valorHoraExtra);
+
     }
 
 
@@ -54,7 +52,20 @@ public class EmpleadoPlanta extends Empleado {
         return auxilioTransporte;
     }
 
+
     public void setAuxilioTransporte(float auxilioTransporte) {
         this.auxilioTransporte = auxilioTransporte;
     }
+
+    @Override
+    public String toString() {
+        return "EmpleadoPlanta{" +
+                "cargo='" + cargo + '\'' +
+                ", horasExtra=" + horasExtra +
+                ", valorHoraExtra=" + valorHoraExtra +
+                ", auxilioTransporte=" + auxilioTransporte +
+                '}';
+    }
 }
+
+

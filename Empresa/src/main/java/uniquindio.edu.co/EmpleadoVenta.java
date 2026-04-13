@@ -5,10 +5,17 @@ public class EmpleadoVenta extends Empleado {
     private float totalVentas;
     private float porcentajeComision;
 
-    public EmpleadoVenta(String nombre, String documento, int edad, float salarioBase, float descuentoSalud, float descuentoPension, float totalVentas, float porcentajeComision) {
-        super(nombre, documento, edad, salarioBase, descuentoSalud, descuentoPension);
-        this.totalVentas = 0;
-        this.porcentajeComision = 0;
+    public EmpleadoVenta(String nombre, String documento, int edad, float salarioBase, float descuentoSalud, float descuentoPension,
+                         CategoriaEmpleado categoria,float totalVentas, float porcentajeComision) {
+        super(nombre, documento, edad, salarioBase, descuentoSalud, descuentoPension, categoria);
+        this.totalVentas = totalVentas;
+        this.porcentajeComision = porcentajeComision;
+    }
+
+    public float calcularSalarioBruto(){
+        float comision = (totalVentas * porcentajeComision /100);
+
+        return calcularBonificacionCategoria() + comision;
     }
 
     public float getTotalVentas() {
@@ -29,11 +36,9 @@ public class EmpleadoVenta extends Empleado {
 
     @Override
     public String toString() {
-        return "EmpleadoVentas{" +
+        return "EmpleadoVenta{" +
                 "totalVentas=" + totalVentas +
                 ", porcentajeComision=" + porcentajeComision +
                 '}';
     }
-
-
 }
